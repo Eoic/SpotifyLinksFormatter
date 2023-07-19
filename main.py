@@ -5,7 +5,7 @@ import time
 import base64
 from requests import get, post
 
-DATA_SOURCE_PATH = os.getenv('DATA_SOURCE_PATH')
+DATA_SOURCE_PATH = 'tracks.txt'
 CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
 
@@ -29,7 +29,7 @@ def get_token():
 
 
 def parse_tracks():
-    with open('data', 'r') as file:
+    with open(DATA_SOURCE_PATH, 'r') as file:
         token = get_token()
         tracks_list = []
         get_url = lambda track_id: 'https://api.spotify.com/v1/tracks/' + track_id
